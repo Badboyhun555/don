@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>आश्रम निर्माण सहयोग</title>
+<meta name="description" content="नए आश्रम निर्माण अभियान में सहयोग करें।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ticker" aria-label="दानदाताओं की सूची"><div class="ticker-track" id="tickerTrack"></div></div>
+<nav class="nav" aria-label="मुख्य मेनू">
+  <a href="#ashrams">आश्रम</a><a href="#qr">UPI दान</a><a href="#donate">दान विवरण</a><a href="#stats">प्रगति</a><a href="#about">पारदर्शिता</a>
+</nav>
+
+<main>
+<!-- 1. बाबा जी -->
+<section id="hero" class="hero">
+  <div class="avatar"><img id="babaImg" alt="बाबा जी" width="200" height="200"></div>
+  <h1 id="babaName">…</h1>
+  <p class="org" id="orgName"></p>
+  <p class="intro">धर्म, सेवा और साधना के प्रसार के लिए नए आश्रमों की स्थापना का संकल्प। आपका हर सहयोग इस पवित्र कार्य को आगे बढ़ाता है।</p>
+  <a class="btn" href="#qr">आश्रम निर्माण में सहयोग करें</a>
+</section>
+
+<!-- 2. आश्रम -->
+<section id="ashrams" class="wrap">
+  <h2>हमारे नए आश्रम निर्माण अभियान</h2>
+  <p class="lead">नए आश्रम साधकों को साधना, सत्संग, सेवा और निःशुल्क सामुदायिक कार्यों के लिए शांत स्थान उपलब्ध कराएँगे।</p>
+  <div id="ashramGrid" class="grid"><p class="muted">लोड हो रहा है…</p></div>
+</section>
+
+<!-- 3. UPI QR (फ़ॉर्म से पहले) -->
+<section id="qr" class="wrap qr-sec">
+  <h2>स्कैन करें और सीधे दान करें</h2>
+  <div class="qr-card">
+    <img id="qrImg" alt="UPI QR कोड" width="260" height="260">
+    <dl class="upi">
+      <dt>UPI ID</dt><dd id="upiId">—</dd>
+      <dt>प्राप्तकर्ता</dt><dd id="upiPayee">—</dd>
+    </dl>
+    <div class="row">
+      <button class="btn" id="dlQr" type="button">QR कोड डाउनलोड करें</button>
+      <button class="btn ghost" id="copyUpi" type="button">UPI ID कॉपी करें</button>
+    </div>
+    <a class="btn ghost" id="upiOpen" href="#" hidden>UPI ऐप में खोलें</a>
+    <p class="notice">QR स्कैन करके सीधे भुगतान किया जा सकता है। भुगतान की पुष्टि इस वेबसाइट के फ़ॉर्म से अलग, संस्था द्वारा बैंक रिकॉर्ड मिलाने के बाद होती है। QR स्कैन करना या फ़ॉर्म जमा करना भुगतान का प्रमाण नहीं है।</p>
+    <p class="msg" id="qrMsg" role="status"></p>
+  </div>
+</section>
+
+<!-- 4. फ़ॉर्म -->
+<section id="donate" class="wrap">
+  <h2>दान विवरण दर्ज करें</h2>
+  <p class="lead">भुगतान ऊपर दिए QR/UPI ID से करें, फिर यहाँ विवरण जमा करके अपना UTR नंबर दें, ताकि संस्था सत्यापित कर सके।</p>
+  <form id="donForm" class="card form" novalidate>
+    <label>पूरा नाम<input id="fName" autocomplete="name" maxlength="80"><span class="err" data-for="fName"></span></label>
+    <label>मोबाइल नंबर<input id="fMobile" inputmode="numeric" autocomplete="tel-national" maxlength="10"><span class="err" data-for="fMobile"></span></label>
+    <div>
+      <span class="lbl">दान राशि (₹)</span>
+      <div class="chips" id="chips">
+        <button type="button" data-a="101">₹101</button><button type="button" data-a="501">₹501</button>
+        <button type="button" data-a="1001">₹1,001</button><button type="button" data-a="2100">₹2,100</button>
+        <button type="button" data-a="">अन्य राशि</button>
+      </div>
+      <input id="fAmount" inputmode="decimal" aria-label="दान राशि" placeholder="राशि लिखें">
+      <span class="err" data-for="fAmount"></span>
+    </div>
+    <label>आश्रम चुनें<select id="fAshram"><option value="">— चुनें —</option></select><span class="err" data-for="fAshram"></span></label>
+    <label>दान का उद्देश्य (वैकल्पिक)<input id="fPurpose" maxlength="200"></label>
+    <label class="chk"><input type="checkbox" id="fAnon"> सार्वजनिक सूची में मेरा नाम “अनाम दानदाता” दिखाएँ</label>
+    <label class="chk"><input type="checkbox" id="fConsent"> मैं <a href="#about">गोपनीयता नीति व दान की शर्तों</a> से सहमत हूँ।</label>
+    <span class="err" data-for="fConsent"></span>
+    <input id="hp" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
+    <button class="btn" id="submitBtn" type="submit">दान विवरण जमा करें</button>
+    <p class="msg" id="formMsg" role="alert"></p>
+  </form>
+
+  <div id="result" class="card" hidden>
+    <h3>आपका दान विवरण दर्ज हुआ</h3>
+    <p>संदर्भ क्रमांक: <strong id="rRef"></strong></p>
+    <p>राशि: <strong id="rAmt"></strong> · आश्रम: <strong id="rAsh"></strong></p>
+    <p class="notice">यह केवल दान का इरादा दर्ज करता है, भुगतान का प्रमाण नहीं। कृपया ऊपर दिए QR/UPI ID से भुगतान करें और भुगतान के बाद अपना UTR/रेफ़रेंस नंबर नीचे दें। संस्था द्वारा सत्यापन के बाद ही दान गिना जाएगा।</p>
+    <a class="btn ghost" id="rUpi" href="#">इस राशि के साथ UPI ऐप खोलें</a>
+    <form id="utrForm" class="form" novalidate>
+      <label>UTR / रेफ़रेंस नंबर (6–30 अक्षर/अंक)<input id="fUtr" maxlength="30" autocapitalize="characters"><span class="err" data-for="fUtr"></span></label>
+      <button class="btn" type="submit">UTR जमा करें</button>
+      <p class="msg" id="utrMsg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- 5. आँकड़े -->
+<section id="stats" class="wrap">
+  <h2>दान की प्रगति</h2>
+  <p class="notice sample" id="sampleNote">नमूना डेटा (डेमो): दिख रहे आँकड़े और नाम काल्पनिक हैं।</p>
+  <div class="stats">
+    <div class="stat"><span>कुल सत्यापित दान राशि</span><b id="sTotal">—</b></div>
+    <div class="stat"><span>कुल सत्यापित दान रिकॉर्ड</span><b id="sCount">—</b><small>प्रत्येक सत्यापित दान एक रिकॉर्ड गिना जाता है</small></div>
+    <div class="stat"><span>आज का सत्यापित दान</span><b id="sToday">—</b></div>
+    <div class="stat"><span>कुल निर्माण लक्ष्य और प्राप्त राशि</span><b id="sGoal">—</b>
+      <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="bar"><i id="barFill"></i></div></div>
+  </div>
+</section>
+
+<!-- 6. शीर्ष दानदाता -->
+<section id="top" class="wrap">
+  <h2>आज के शीर्ष दानदाता</h2>
+  <ol id="topList" class="top"><li class="muted">लोड हो रहा है…</li></ol>
+</section>
+
+<!-- 7. पारदर्शिता -->
+<section id="about" class="wrap about">
+  <h2>पारदर्शिता</h2>
+  <div class="card">
+    <h3>संस्था की जानकारी</h3>
+    <p id="aOrg"></p>
+    <p>फ़ोन: <span id="aPhone">—</span> · ईमेल: <span id="aMail">—</span></p>
+    <p class="muted">पंजीकरण/कर-छूट संबंधी जानकारी (यदि लागू हो) यहाँ केवल वास्तविक दस्तावेज़ों के आधार पर जोड़ें।</p>
+  </div>
+  <details class="card"><summary>दान का उपयोग</summary><p>प्राप्त सत्यापित दान का उपयोग चुने गए आश्रम के भूमि, निर्माण और संबंधित आवश्यक कार्यों में किया जाएगा। [संस्था यहाँ वास्तविक विवरण लिखे]</p></details>
+  <details class="card"><summary>गोपनीयता नीति</summary><p>आपका मोबाइल नंबर और UTR केवल दान सत्यापन के लिए सुरक्षित रखे जाते हैं और सार्वजनिक रूप से कभी नहीं दिखाए जाते। सार्वजनिक सूची में केवल आपका नाम (या “अनाम दानदाता”) और राशि दिख सकती है।</p></details>
+  <details class="card"><summary>नियम व शर्तें</summary><p>दान स्वैच्छिक है। भुगतान की पुष्टि केवल संस्था द्वारा बैंक/UPI रिकॉर्ड से मिलान के बाद होती है। फ़ॉर्म जमा करना भुगतान का प्रमाण नहीं है।</p></details>
+  <details class="card"><summary>रिफ़ंड नीति</summary><p>[संस्था अपनी वास्तविक रिफ़ंड नीति यहाँ लिखे। गलत या दोहरे भुगतान के लिए ऊपर दिए संपर्क पर UTR सहित सूचित करें।]</p></details>
+</section>
+</main>
+
+<footer class="foot"><p id="footOrg"></p><p>सर्वाधिकार सुरक्षित</p></footer>
+<a class="sticky" id="stickyCta" href="#qr">आश्रम निर्माण में सहयोग करें</a>
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

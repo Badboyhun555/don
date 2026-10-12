@@ -1,0 +1,71 @@
+:root{--bg:#FFFDF8;--paper:#fff;--gold:#B8902F;--gold-l:#E6D3A0;--ink:#2B2B2B;--mute:#6b665c;--err:#a8321f;--ok:#2e6b3a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:56px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.75 "Noto Sans Devanagari",sans-serif;padding-bottom:84px}
+h1,h2,h3{font-family:"Tiro Devanagari Hindi",serif;font-weight:400;line-height:1.35;margin:0 0 .5em}
+h2{font-size:1.7rem;text-align:center;padding-bottom:.4em;border-bottom:1px solid var(--gold-l)}
+a{color:var(--gold)}
+.wrap{max-width:1000px;margin:0 auto;padding:44px 18px}
+.lead{max-width:62ch;margin:0 auto 1.4em;text-align:center;color:var(--mute)}
+.muted{color:var(--mute)}
+.nav{position:sticky;top:0;z-index:20;display:flex;gap:4px;justify-content:center;overflow-x:auto;background:rgba(255,253,248,.95);border-bottom:1px solid var(--gold-l);padding:10px}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--ink);padding:2px 12px;font-size:.95rem}
+.hero{text-align:center;padding:48px 18px 56px;max-width:700px;margin:0 auto}
+.avatar{width:200px;height:200px;margin:0 auto 22px;border-radius:50%;border:3px solid var(--gold);padding:6px;background:var(--paper);box-shadow:0 6px 24px rgba(184,144,47,.18)}
+.avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;background:#f3ecda}
+h1{font-size:2.1rem}
+.org{color:var(--gold);font-weight:500;margin:0 0 1em}
+.intro{margin:0 auto 1.6em;max-width:56ch}
+.btn{display:inline-block;border:1.5px solid var(--gold);background:var(--gold);color:#fff;font:500 1rem "Noto Sans Devanagari",sans-serif;padding:11px 24px;border-radius:999px;text-decoration:none;cursor:pointer;min-height:46px}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn:disabled{opacity:.6;cursor:wait}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card,.acard,.stat,.qr-card{background:var(--paper);border:1px solid var(--gold-l);border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.card{padding:20px;margin-top:16px}
+.acard{overflow:hidden;display:flex;flex-direction:column}
+.acard img{width:100%;height:170px;object-fit:cover}
+.acard .in{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.acard h3{font-size:1.3rem}
+.acard p{margin:0}
+.meta{font-size:.92rem;color:var(--mute)}
+.tag{align-self:flex-start;border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:0 12px;font-size:.88rem}
+.acard .btn{margin-top:auto;text-align:center}
+.qr-card{max-width:420px;margin:20px auto 0;padding:24px;text-align:center;border:2px solid var(--gold)}
+.qr-card img{width:260px;max-width:100%;height:auto;aspect-ratio:1;object-fit:contain;border:1px solid var(--gold-l);border-radius:10px;padding:8px;background:#fff}
+.upi{margin:14px 0}.upi dt{color:var(--mute);font-size:.9rem}.upi dd{margin:0 0 8px;font-weight:600;word-break:break-all}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
+.notice{background:#faf4e3;border-left:3px solid var(--gold);padding:10px 14px;text-align:left;font-size:.93rem;border-radius:6px}
+.form{display:grid;gap:14px}.form label,.lbl{display:grid;gap:4px;font-weight:500}
+input,select{font:inherit;padding:11px 12px;border:1px solid var(--gold-l);border-radius:10px;background:#fff;color:var(--ink);width:100%;min-height:46px}
+.chk{display:flex!important;grid-template-columns:none;gap:10px;align-items:flex-start;font-weight:400}.chk input{width:22px;min-height:22px;margin-top:5px;flex:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.chips button{border:1px solid var(--gold);background:#fff;color:var(--ink);border-radius:999px;padding:6px 16px;font:inherit;cursor:pointer;min-height:44px}
+.chips button.on{background:var(--gold);color:#fff}
+.err{color:var(--err);font-size:.88rem;min-height:0}.msg{margin:0;font-weight:500}.msg.bad{color:var(--err)}.msg.good{color:var(--ok)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px}
+.stats{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:20px}
+.stat{padding:20px;border-radius:22px;text-align:center;display:grid;gap:4px}
+.stat span{color:var(--mute);font-size:.95rem}.stat b{font:400 1.7rem "Tiro Devanagari Hindi",serif;color:var(--gold)}.stat small{color:var(--mute)}
+.bar{height:8px;background:#f1e8cf;border-radius:8px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;width:0;background:var(--gold)}
+.top{list-style:none;padding:0;margin:20px auto 0;max-width:560px;display:grid;gap:8px}
+.top li{display:flex;gap:14px;align-items:center;padding:10px 16px;background:var(--paper);border:1px solid var(--gold-l);border-radius:12px}
+.top .rk{width:34px;height:34px;border-radius:50%;border:1px solid var(--gold-l);display:grid;place-items:center;flex:none}
+.top li.g .rk{background:var(--gold);color:#fff;border-color:var(--gold)}.top li.g{border-color:var(--gold)}
+.top .nm{flex:1}.top .am{font-weight:600}
+.about summary{cursor:pointer;font-weight:500}
+.foot{text-align:center;border-top:1px solid var(--gold-l);padding:24px 18px;color:var(--mute);font-size:.9rem}
+.sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;text-align:center;background:var(--gold);color:#fff;text-decoration:none;font-weight:500;padding:13px;border-radius:999px;box-shadow:0 4px 16px rgba(0,0,0,.18)}
+.sticky.off{display:none}
+@media(min-width:760px){.sticky{left:auto;right:20px;width:auto;padding:13px 26px}h1{font-size:2.6rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.ticker{position:sticky;top:0;z-index:25;overflow:hidden;background:#2B2B2B;color:#fff;border-bottom:2px solid var(--gold);height:40px}
+.ticker-track{display:flex;width:max-content;animation:tick var(--dur,3000s) linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker span{white-space:nowrap;padding:0 22px;line-height:40px;font-size:.95rem}
+.ticker b{color:var(--gold-l);font-weight:600;margin-left:6px}
+@keyframes tick{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.ticker{overflow-x:auto}.ticker-track{animation:none}}
+.nav{top:40px}html{scroll-padding-top:96px}
+.sample{margin:12px auto;max-width:560px}
